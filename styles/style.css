@@ -1,0 +1,56 @@
+body {
+    background: black;
+}
+
+.wrapper {
+    width: 70%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.game {
+    display: flex;
+    justify-content: space-between;
+}
+
+.door {
+    height: 300px;
+    width: 225px;
+    margin: 25px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.door.doorSelected {
+    background-color: lightsteelblue;
+}
+
+.character {
+    height: 200px;
+    width: 200px;
+    margin: 50px 0;
+    margin-left: 15px;
+    margin-right:0;
+
+}
+
+
+h1, h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+
+.scoreTitle {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    margin:0;
+    margin-left: 25px;
+    color: red;
+}
