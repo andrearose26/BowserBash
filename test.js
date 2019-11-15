@@ -66,7 +66,7 @@ function bowserInDoor0() {
     let bowserIsThere0 = $('.door0').find('img').val();
     if (bowserIsThere0 === undefined) { //Bowser is not there and S key is selected
         score--;
-    } else if (bowserIsThere0 === '') { //Bowser is there and S key is selected
+    } else if (bowserIsThere0 === ''){ //Bowser is there and S key is selected
         score++;
     }
     $('.score').html(`${score}`); //updates the score in the DOM
@@ -90,7 +90,7 @@ $(document).on("keydown", function (keypress) {
         if (score < 0) {
             alert('You lose!');
             clearInterval(bowserAppears);
-        } else if (score > 10) {
+        } else if (score > 10){
             alert('You win!')
         }
     }
@@ -104,7 +104,7 @@ $(document).on("keydown", function (keypress) {
         if (score < 0) {
             alert('You lose!');
             clearInterval(bowserAppears);
-        } else if (score > 10) {
+        } else if (score > 10){
             alert('You win!')
         }
     }
