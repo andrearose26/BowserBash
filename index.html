@@ -5,29 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bowser Bash</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <main class = "wrapper">
-        <h1 class="title">Bowser Bash</h1>
+    <main>
+        <div id ="start">
+            <div class="start-info">
+                <h1>Bowser Bash</h1>
+                
+                <h3>Get ready to bash when you see Bowser </h3>
+                <div class="instructions">
+                    <p>Press the <span class = "instKey">S</span> key for the left door</p>
+                    <p>Press the <span class = 'instKey'>L</span> key for the right door</p>
+                </div>
+                
+                <button>Press space to start</button>
+            </div>
+                
 
-        <div class="game">
-            
-            <div class = "door door0 key83">
-                <!-- <img src="assets/bowser1.png" class="character" alt=""> -->
-            </div>
-            <div class = "door door1 key76">
-                <!-- <img src="assets/bowser1.png" class="character" alt=""> -->
-            </div>
-            
         </div>
-        
-        <div class="scoreSection">
-            <h2 class='scoreTitle'>Score:</h2>
-            <p class='score'>0</p>
+        <div id= "game" class="wrapper">
+
+            <h1 class="title">Bowser Bash</h1>
+            
+            <div class="game">
+                
+                <div class = "door door0 key83">
+                    <!-- <img src="assets/bowser1.png" class="character" alt=""> -->
+                </div>
+                <div class = "door door1 key76">
+                    <!-- <img src="assets/bowser1.png" class="character" alt=""> -->
+                </div>
+                
+            </div>
+            
+            <div class="scoreSection">
+                <h2 class='scoreTitle'>Score:</h2>
+                <p class='score'>0</p>
+            </div>
         </div>
     </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

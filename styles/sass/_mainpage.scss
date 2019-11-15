@@ -1,0 +1,135 @@
+#start {
+    height: calc(100vh - 100px);
+    text-align: center;
+    border: 5px solid white;
+    border-radius: 30px;
+    margin: 50px 35px;
+    
+    h1 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+    }
+}
+
+
+.start-info {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin:0 auto;
+}
+
+.instructions {
+    display:flex;
+}
+
+button {
+    background: black;
+    color: white;
+    border: 3px solid white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    text-transform: uppercase;
+    margin: 15px;
+}
+
+.instKey {
+    font-size: 2rem;
+}
+
+@media(max-width: 335px) {
+    #start {
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: .8rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    button {
+        width: 125px;
+    }
+
+    .instKey {
+        font-size: 1rem;
+    }
+}
+
+@media(min-width: 336px) and (max-width: 500px) {
+
+    .instKey {
+        font-size: 1rem; 
+    }
+
+    .instructions {
+        p:first-child {
+            margin-right: 10px;
+        }
+    }
+}
+
+@media(min-width: 501px) and (max-width: 700px) {
+
+    .instKey {
+        font-size: 1.2rem; 
+    }
+
+    .instructions {
+        p:first-child {
+            margin-right: 25px;
+        }
+
+    }
+}
+
+@media(min-width:700px) and (max-width: 900px) {
+    .instKey {
+        font-size: 1.2rem; 
+    }
+    
+    .start-info {
+        width: 60%;
+    }
+    .instructions {
+        p:first-child {
+            margin-right: 50px;
+        }
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media(min-width:900px) {
+    #start {
+        h3 {
+            font-size: 1.4rem;
+        }
+    }
+
+    .start-info {
+        width: 50%;
+    }
+
+    .instructions {
+        p:first-child {
+            margin-right: 50px;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    }
+}

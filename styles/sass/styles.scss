@@ -1,0 +1,26 @@
+@import "normalize";
+@import "game";
+@import "mainpage";
+
+@font-face {
+    font-family: "SuperMario";
+    src: url(../assets/Super-Mario-World.ttf);
+}
+
+body {
+    background: black;
+    font-family: "SuperMario";
+    color: white;
+    font-size: 62.5%;
+}
+
+.wrapper {
+    width: 70%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    text-align: center;
+    text-transform: uppercase;
+}

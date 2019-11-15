@@ -2,7 +2,20 @@
 //SET UP MAIN GAMEPLAY PAGE ==========================
 
 let score = [];
+
 const doors = [".door0", ".door1"];
+
+const keys = [
+    {
+        name: "S Key",
+        key: 83
+    },
+    {
+        name: "L Key",
+        key: 76
+    }
+]
+
 const characters = {
     bad: [
         {
@@ -13,6 +26,26 @@ const characters = {
 }
 
 let randomDoor; //selects a random array number
+
+$(document).ready(function() {
+    $('#game').hide();
+
+    //When spacebar is pressed, 
+    //- hide start page
+    //- show game page
+    //- activate s key
+    //- activate l key
+    $(document).on("keydown", function (keypress) {
+        if (keypress.keyCode === 32) {
+            $('#start').hide();
+            $('#game').show();
+            sKeyFunction();
+            lKeyFunction()
+            winOrLoseL();
+            winOrLoseS()
+        }
+    })
+});
 
 //Function makes Bowser appear randomly in a door
 const badCharAppear = function () {
@@ -32,23 +65,27 @@ const bowserAppears = setInterval(badCharAppear, 2500); //Bowser will appear eve
 
 //SET UP USER CONTROLS ===============================
 
-//1. Set up key presses
-
 //FOR S KEY
-$(document).on("keydown", function (keypress) {
-    if (keypress.keyCode === 83) {
-        //add a class of doorSelected to show that it was selected
-        $(".key83").addClass('doorSelected');
-    }
-})
+const sKeyFunction = function () {
+    $(document).on("keydown", function (keypress) {
+        if (keypress.keyCode === 83) {
+            //add a class of doorSelected to show that it was selected
+            $(".key83").addClass('doorSelected');
+        }
+        console.log('sKeyFunction')
+    })
+}
 
 //FOR L KEY
-$(document).on("keydown", function (keypress) {
-    if (keypress.keyCode === 76) {
-        //add a class of doorSelected to show that it was selected
-        $(".key76").addClass('doorSelected');
-    }
-})
+const lKeyFunction = function () {
+
+    $(document).on("keydown", function (keypress) {
+        if (keypress.keyCode === 76) {
+            //add a class of doorSelected to show that it was selected
+            $(".key76").addClass('doorSelected');
+        }
+    })
+}
 
 //removes class of doorSelected when user lifts keys
 $(document).keyup(function () {
@@ -84,42 +121,41 @@ function bowserInDoor1() {
 }
 
 //If user presses L, checks if Bowser is there and updates score 
-$(document).on("keydown", function (keypress) {
-    if (keypress.keyCode === 83) {
-        bowserInDoor0(); // If Bowser is in Door 0 and S key has been selected, increase score by 1
-        if (score < 0) {
-            alert('You lose!');
-            clearInterval(bowserAppears);
-        } else if (score > 10) {
-            alert('You win!')
+const winOrLoseL = function () {
+    $(document).on("keydown", function (keypress) {
+        if (keypress.keyCode === 83) {
+            bowserInDoor0(); // If Bowser is in Door 0 and S key has been selected, increase score by 1
+            if (score < 0) {
+                alert('You lose!');
+                clearInterval(bowserAppears);
+            } else if (score > 10) {
+                alert('You win!')
+            }
         }
-    }
-})
+    })
+}
 
 //If user presses S, checks if Bowser is there and updates score 
-$(document).on("keydown", function (keypress) {
-    if (keypress.keyCode === 76) {
-        bowserInDoor1(); // If Bowser is in Door 1 and L key has been selected, increase score by 1
-        console.log(score)
-        if (score < 0) {
-            alert('You lose!');
-            clearInterval(bowserAppears);
-        } else if (score > 10) {
-            alert('You win!')
+const winOrLoseS = function() {
+    $(document).on("keydown", function (keypress) {
+        if (keypress.keyCode === 76) {
+            bowserInDoor1(); // If Bowser is in Door 1 and L key has been selected, increase score by 1
+            if (score < 0) {
+                alert('You lose!');
+                clearInterval(bowserAppears);
+            } else if (score >= 10) {
+                alert('You win!')
+            }
         }
-    }
-})
+    })
 
+    console.log('win or lose function ran')
+}
 
-//3. If score === 0, show loser screen
-
-//4. If score >= 50, show winner screen
 
 //DISPLAY FINAL SCREENS (WIN/LOSE)====================
 //1. Reset score
 //2. Reset spacebar function
-
-//to stop interval, try clearInterval()
 
 //SET UP GAMEPLAY SPEED (stretch) ====================
 
