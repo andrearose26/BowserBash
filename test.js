@@ -1,4 +1,3 @@
-
 //SET UP MAIN GAMEPLAY PAGE ==========================
 let score = [];
 
@@ -93,7 +92,7 @@ const keyFunction = function () {
 score = [0];
 let newScore, key76, key83;
 
-function bowserInDoor(){
+function bowserInDoor() {
     let locationValue = $('.door' + bowserLocation).find('img').val();
     if (locationValue === undefined) { //Bowser is not there and correct key is selected
         score--;

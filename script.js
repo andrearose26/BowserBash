@@ -1,14 +1,20 @@
-
 //SET UP MAIN GAMEPLAY PAGE ==========================
-
 let score = [];
 
-const doors = [".door0", ".door1"];
+const doors = [".door0", ".door1", ".door2", ".door3"];
 
 const keys = [
     {
         name: "S Key",
         key: 83
+    },
+    {
+        name: "D Key",
+        key: 68
+    },
+    {
+        name: "K Key",
+        key: 75
     },
     {
         name: "L Key",
@@ -27,7 +33,7 @@ const characters = {
 
 let randomDoor; //selects a random array number
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#game').hide();
 
     //When spacebar is pressed, 
@@ -39,11 +45,8 @@ $(document).ready(function() {
         if (keypress.keyCode === 32) {
             $('#start').hide();
             $('#game').show();
-            // sKeyFunction();
-            // lKeyFunction()
             keyFunction();
-            winOrLoseL();
-            winOrLoseS()
+            winOrLose();
         }
     })
 });
@@ -62,11 +65,11 @@ const bowserAppear = function () {
     }, 1000)
 }
 
-const bowserAppears = setInterval(bowserAppear, 2500); //Bowser will appear every 2.5 seconds
+const bowserAppears = setInterval(bowserAppear, 2000); //Bowser will appear every 2.5 seconds
 
 //SET UP USER CONTROLS ===============================
 
-let bowserIsThere;
+let bowserLocation; //equal to door number
 
 const keyFunction = function () {
     $(document).on("keydown", function (keypress) {
@@ -74,18 +77,32 @@ const keyFunction = function () {
         if (keypress.keyCode === 83) {
             //add a class of doorSelected to show that it was selected
             $(".key83").addClass('doorSelected');
-            bowserIsThere = 0;
+            bowserLocation = 0;
+        }
+        //D Key
+        if (keypress.keyCode === 68) {
+            //add a class of doorSelected to show that it was selected
+            $(".key68").addClass('doorSelected');
+            bowserLocation = 1;
+        }
+        //K Key
+        if (keypress.keyCode === 75) {
+            //add a class of doorSelected to show that it was selected
+            $(".key75").addClass('doorSelected');
+            bowserLocation = 2;
         }
         //L Key
         if (keypress.keyCode === 76) {
             //add a class of doorSelected to show that it was selected
             $(".key76").addClass('doorSelected');
-            bowserIsThere = 1;
+            bowserLocation = 3;
         }
     })
     //removes class of doorSelected when user lifts keys
     $(document).keyup(function () {
         $('.key83').removeClass('doorSelected');
+        $('.key68').removeClass('doorSelected');
+        $('.key75').removeClass('doorSelected');
         $('.key76').removeClass('doorSelected');
     });
 }
@@ -95,52 +112,56 @@ const keyFunction = function () {
 //SET UP SCORING SYSTEM ==============================
 
 score = [0];
-let newScore, key76, key83;
+let newScore, key76, key83, key68, key75;
 
-
-
-function bowserInDoor0() {
-    let bowserIsThere0 = $('.door0').find('img').val();
-    if (bowserIsThere0 === undefined) { //Bowser is not there and S key is selected
+function bowserInDoor() {
+    let locationValue = $('.door' + bowserLocation).find('img').val();
+    if (locationValue === undefined) { //Bowser is not there and correct key is selected
         score--;
-    } else if (bowserIsThere0 === '') { //Bowser is there and S key is selected
-        score++;
-    }
-    $('.score').html(`${score}`); //updates the score in the DOM
-}
-
-//Function that checks if Bowser is in door 2
-function bowserInDoor1() {
-    let bowserIsThere1 = $('.door1').find('img').val();
-    if (bowserIsThere1 === undefined) { //Bowser is not there and S key is selected
-        score--;
-    } else if (bowserIsThere1 === '') { //Bowser is there and S key is selected
+    } else if (locationValue === '') { //Bowser is there and correct key is selected
         score++;
     }
     $('.score').html(`${score}`); //updates the score in the DOM
 }
 
 //If user presses L, checks if Bowser is there and updates score 
-const winOrLoseL = function () {
+const winOrLose = function () {
     $(document).on("keydown", function (keypress) {
         if (keypress.keyCode === 83) {
-            bowserInDoor0(); // If Bowser is in Door 0 and S key has been selected, increase score by 1
+            bowserInDoor(); // If Bowser is in a door and S key has been selected, increase score by 1
             if (score < 0) {
                 alert('You lose! Press ok to play again.');
                 location.reload(true);
-            } else if (score > 10) {
+            } else if (score >= 10) {
                 alert('You win! Press okay to play again.');
                 location.reload(true);
             }
         }
-    })
-}
 
-//If user presses S, checks if Bowser is there and updates score 
-const winOrLoseS = function() {
-    $(document).on("keydown", function (keypress) {
+        if (keypress.keyCode === 68) {
+            bowserInDoor(); // If Bowser is in a door and D key has been selected, increase score by 1
+            if (score < 0) {
+                alert('You lose! Press ok to play again.');
+                location.reload(true);
+            } else if (score >= 10) {
+                alert('You win! Press okay to play again.');
+                location.reload(true);
+            }
+        }
+
+        if (keypress.keyCode === 75) {
+            bowserInDoor(); // If Bowser is in a door and K key has been selected, increase score by 1
+            if (score < 0) {
+                alert('You lose! Press ok to play again.');
+                location.reload(true);
+            } else if (score >= 10) {
+                alert('You win! Press okay to play again.');
+                location.reload(true);
+            }
+        }
+        
         if (keypress.keyCode === 76) {
-            bowserInDoor1(); // If Bowser is in Door 1 and L key has been selected, increase score by 1
+            bowserInDoor(); // If Bowser is in a door and L key has been selected, increase score by 1
             if (score < 0) {
                 alert('You lose! Press ok to play again.');
                 clearInterval(bowserAppears);
@@ -154,10 +175,6 @@ const winOrLoseS = function() {
     })
 }
 
-
-//DISPLAY FINAL SCREENS (WIN/LOSE)====================
-//1. Reset score
-//2. Reset spacebar function
 
 //SET UP GAMEPLAY SPEED (stretch) ====================
 
