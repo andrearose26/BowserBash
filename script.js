@@ -26,16 +26,19 @@ const characters = {
     bad: [
         {
             name: "Bowser",
-            points: -5,
+            pointsGained: 3,
+        },
+        {
+            name: "Bowsey",
+            pointsGained: 1
         }
     ]
 }
 
-let randomDoor; //selects a random array number
 
 $(document).ready(function () {
     $('#game').hide();
-
+    
     //When spacebar is pressed, 
     //- hide start page
     //- show game page
@@ -51,21 +54,44 @@ $(document).ready(function () {
     })
 });
 
+let randomDoorBowser, randomDoorBowsy; //selects a random array number
+
 //Function makes Bowser appear randomly in a door
 const bowserAppear = function () {
 
     setInterval(function () { //calls a random door every second
-        randomDoor = Math.floor(Math.random() * doors.length)
-    }, 1000);
+        randomDoorBowser = Math.floor(Math.random() * doors.length)
+        // console.log(randomDoorBowser);
+    }, 2500);
 
-    $(".door" + randomDoor).append(`<img src="assets/bowser1.png" class="character" alt="">`); //adds the html of Bowser to DOM
+    if (randomDoorBowser !== randomDoorBowsy){
+        $(".door" + randomDoorBowser).append(`<img src="assets/bowser1.png" class="character bowser" alt="">`); //adds the html of Bowser to DOM
+    
+        setTimeout(function () { //removes Bowser after 1 second
+            $('img').remove();
+        }, 800)
+    }
 
-    setTimeout(function () { //removes Bowser after 1 second
-        $('img').remove();
-    }, 1000)
 }
 
-const bowserAppears = setInterval(bowserAppear, 2000); //Bowser will appear every 2.5 seconds
+const bowsyAppear = function () {
+
+    setInterval(function () { //calls a random door every second
+        randomDoorBowsy = Math.floor(Math.random() * doors.length)
+        // console.log(randomDoorBowsy);
+    }, 1500);
+
+    if(randomDoorBowsy !== randomDoorBowser){
+        $(".door" + randomDoorBowsy).append(`<img src="assets/bowser0.png" class="character bowsy" alt="">`); //adds the html of Bowsy to DOM
+        setTimeout(function () { //removes Bowsy after 1 second
+            $('img').remove();
+        }, 900)
+    }
+
+}
+const bowserAppears = setInterval(bowserAppear, 2500); //Bowser will appear every 2.5 seconds
+const bowsyAppears = setInterval(bowsyAppear, 1500); //Bowsy will appear every 2.5 seconds
+
 
 //SET UP USER CONTROLS ===============================
 
@@ -120,8 +146,25 @@ function bowserInDoor() {
         score--;
     } else if (locationValue === '') { //Bowser is there and correct key is selected
         score++;
+        whichBowser();
     }
     $('.score').html(`${score}`); //updates the score in the DOM
+}
+
+let bowser = $('.bowser').length;
+console.log(bowser);
+const whichBowser = function () {
+    // let bowsy = $('.door').find('bowsy').val();
+    // console.log(bowsy);
+
+
+    if (bowser === ''){ //bowser is there
+        score = score + 3;
+        console.log('bowser is there')
+    }
+    // if(bowsy === '') { //bowsey is there
+    //     score = score + 1;
+    // }
 }
 
 //If user presses L, checks if Bowser is there and updates score 
@@ -164,11 +207,9 @@ const winOrLose = function () {
             bowserInDoor(); // If Bowser is in a door and L key has been selected, increase score by 1
             if (score < 0) {
                 alert('You lose! Press ok to play again.');
-                clearInterval(bowserAppears);
                 location.reload(true);
             } else if (score >= 10) {
                 alert('You win! Press okay to play again.')
-                clearInterval(bowserAppears);
                 location.reload(true);
             }
         }
