@@ -38,7 +38,6 @@ const characters = {
 
 $(document).ready(function () {
     $('#game').hide();
-    
     //When spacebar is pressed, 
     //- hide start page
     //- show game page
@@ -62,7 +61,7 @@ const bowserAppear = function () {
     setInterval(function () { //calls a random door every second
         randomDoorBowser = Math.floor(Math.random() * doors.length)
         // console.log(randomDoorBowser);
-    }, 2500);
+    }, 3500);
 
     if (randomDoorBowser !== randomDoorBowsy){
         $(".door" + randomDoorBowser).append(`<img src="assets/bowser1.png" class="character bowser" alt="">`); //adds the html of Bowser to DOM
@@ -71,7 +70,6 @@ const bowserAppear = function () {
             $('img').remove();
         }, 800)
     }
-
 }
 
 const bowsyAppear = function () {
@@ -89,7 +87,7 @@ const bowsyAppear = function () {
     }
 
 }
-const bowserAppears = setInterval(bowserAppear, 2500); //Bowser will appear every 2.5 seconds
+const bowserAppears = setInterval(bowserAppear, 3500); //Bowser will appear every 2.5 seconds
 const bowsyAppears = setInterval(bowsyAppear, 1500); //Bowsy will appear every 2.5 seconds
 
 
@@ -142,29 +140,38 @@ let newScore, key76, key83, key68, key75;
 
 function bowserInDoor() {
     let locationValue = $('.door' + bowserLocation).find('img').val();
-    if (locationValue === undefined) { //Bowser is not there and correct key is selected
+    if (locationValue === undefined) { //Someone is not there and correct key is selected
         score--;
-    } else if (locationValue === '') { //Bowser is there and correct key is selected
-        score++;
+        $('audio').get(1).play();
+    } else if (locationValue === '') { //Someone is there and correct key is selected
+        // score++;
         whichBowser();
+        bowserPoints();
+        $('audio').get(0).play();
     }
     $('.score').html(`${score}`); //updates the score in the DOM
 }
 
-let bowser = $('.bowser').length;
-console.log(bowser);
+let bowser, bowsy; //determines bowser's location
+
 const whichBowser = function () {
-    // let bowsy = $('.door').find('bowsy').val();
-    // console.log(bowsy);
+    bowser = $('.bowser').length;
+    bowsy = $('.bowsy').length;
+    console.log(bowser);
+    console.log(bowsy)
+}
 
 
-    if (bowser === ''){ //bowser is there
-        score = score + 3;
-        console.log('bowser is there')
+//if door = bowser/bowsey.length 1 = they are there
+const bowserPoints = function () {
+    if (bowser === 1){ //bowser is there
+        score += 2;
+        console.log('bowser is there');
     }
-    // if(bowsy === '') { //bowsey is there
-    //     score = score + 1;
-    // }
+    if(bowsy === 1) {
+        score++;
+        console.log('bowsy is there');
+    }
 }
 
 //If user presses L, checks if Bowser is there and updates score 
@@ -173,9 +180,9 @@ const winOrLose = function () {
         if (keypress.keyCode === 83) {
             bowserInDoor(); // If Bowser is in a door and S key has been selected, increase score by 1
             if (score < 0) {
-                alert('You lose! Press ok to play again.');
+                alert('You lose! Press okay to play again.');
                 location.reload(true);
-            } else if (score >= 10) {
+            } else if (score >= 20) {
                 alert('You win! Press okay to play again.');
                 location.reload(true);
             }
@@ -184,9 +191,9 @@ const winOrLose = function () {
         if (keypress.keyCode === 68) {
             bowserInDoor(); // If Bowser is in a door and D key has been selected, increase score by 1
             if (score < 0) {
-                alert('You lose! Press ok to play again.');
+                alert('You lose! Press okay to play again.');
                 location.reload(true);
-            } else if (score >= 10) {
+            } else if (score >= 20) {
                 alert('You win! Press okay to play again.');
                 location.reload(true);
             }
@@ -195,9 +202,9 @@ const winOrLose = function () {
         if (keypress.keyCode === 75) {
             bowserInDoor(); // If Bowser is in a door and K key has been selected, increase score by 1
             if (score < 0) {
-                alert('You lose! Press ok to play again.');
+                alert('You lose! Press okay to play again.');
                 location.reload(true);
-            } else if (score >= 10) {
+            } else if (score >= 20) {
                 alert('You win! Press okay to play again.');
                 location.reload(true);
             }
@@ -206,9 +213,9 @@ const winOrLose = function () {
         if (keypress.keyCode === 76) {
             bowserInDoor(); // If Bowser is in a door and L key has been selected, increase score by 1
             if (score < 0) {
-                alert('You lose! Press ok to play again.');
+                alert('You lose! Press okay to play again.');
                 location.reload(true);
-            } else if (score >= 10) {
+            } else if (score >= 20) {
                 alert('You win! Press okay to play again.')
                 location.reload(true);
             }
