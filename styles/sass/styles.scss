@@ -1,3 +1,4 @@
+@import "variables";
 @import "normalize";
 @import "game";
 @import "mainpage";
@@ -9,7 +10,7 @@
 
 body {
     background-color: #041340;
-    font-family: "SuperMario";
+    font-family: $main-font;
     color: white;
     font-size: 62.5%;
 }

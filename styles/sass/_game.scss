@@ -13,7 +13,7 @@
     width: 200px;
     margin: 10px;
     border-radius: 20px;
-    border: 5px solid #FF00A3;
+    border: 5px solid $pink;
 }
 
 .door-info {
@@ -29,14 +29,14 @@
 }
 
 .door-border {
-    border: 5px solid #711CA2;
+    border: 5px solid $purple;
     border-radius: 20px;
     height: 270px;
     width: 200px;
 }
 
 .door.doorSelected {
-    background-color:rgba($color: #FF00A3, $alpha: 0.42);
+    background-color:rgba($color: $pink, $alpha: 0.42);
 }
 
 .character {
@@ -50,7 +50,7 @@
 
 .title {
     font-size: 2rem;
-    text-shadow: 3px 3px #711CA2;
+    text-shadow: 3px 3px $purple;
     margin-top: 2.5rem;
 }
 
@@ -63,7 +63,7 @@ h1, h2 {
 .scoreSection {
     display: flex;
     justify-content: center;
-    text-shadow: 3px 3px #711CA2;
+    text-shadow: 3px 3px $purple;
 }
 
 .scoreTitle {
@@ -83,7 +83,7 @@ h1, h2 {
     .door {
         height: 250px;
         width: 175px;
-        border: 3px solid #FF00A3;
+        border: 3px solid $pink;
     }
 
     .door-info {
@@ -96,7 +96,7 @@ h1, h2 {
     .door-border {
         height: 245px;
         width: 175px;
-        border: 3px solid #711CA2;
+        border: 3px solid $purple;
     }
 
     .character {

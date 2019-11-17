@@ -3,196 +3,279 @@ let score = []; //only doors and score REALLY needed
 
 const doors = [".door0", ".door1", ".door2", ".door3"];
 
-const keys = [
-    {
-        name: "S Key",
-        key: 83
-    },
-    {
-        name: "D Key",
-        key: 68
-    },
-    {
-        name: "K Key",
-        key: 75
-    },
-    {
-        name: "L Key",
-        key: 76
-    }
-]
+// const keys = [
+//     {
+//         name: "S Key",
+//         key: 83
+//     },
+//     {
+//         name: "D Key",
+//         key: 68
+//     },
+//     {
+//         name: "K Key",
+//         key: 75
+//     },
+//     {
+//         name: "L Key",
+//         key: 76
+//     }
+// ]
 
-const characters = {
-    bad: [
-        {
-            name: "Bowsey",
-            pointsGained: 1
-        },
-        {
-            name: "Bowser",
-            pointsGained: 3,
-            // speedOne: 
-        }
-    ]
-}
+// const characters = {
+//     bad: [
+//         {
+//             name: "Bowsey",
+//             pointsGained: 1
+//         },
+//         {
+//             name: "Bowser",
+//             pointsGained: 3,
+
+//         }
+//     ]
+// }
 
 //When document starts, do the following: 
 $(document).ready(function () {
-    $('#game').hide(); //Hide the game div
-    if ($(window).width() < 575) {
-        console.log('mobile')
-    }
-    $(document).on("keydown", function (keypress) { //When the spacebar is pressed
+    $('#game').hide(); //hide the game div
+    $(document).on("keydown", function (keypress) { //when the spacebar is pressed
         if (keypress.keyCode === 32) {
             $('#start').hide(); //- hide start page
             $('#game').show(); //- show game page
             keyFunction(); //- activate keys
             winOrLose(); //- start checking the score
-            speeds();
+            speeds(); //set speed timer
         }
     })
 });
 
-//CHARACTER APPEARANCES ================================
+//CONTROL CHARACTER APPEARANCES ============================
 
-let randomDoorBowser, randomDoorBowsy, bowserSpeed, bowsySpeed; //selects a random door number from the doors array
-bowserSpeed = 3500; //sets original speed
-bowsySpeed = 1500;
+let randomDoorBowser, randomDoorBowsy, randomDoorMario, randomDoorWario, bowserSpeed, bowsySpeed, marioSpeed, warioSpeed; //selects a random door number from the doors array
+bowserSpeed = 5000; //sets original speeds
+bowsySpeed = 2500;
+marioSpeed = 2000;
+warioSpeed = 3500;
 
-//set timeout, change variable to bowser new speed, create an array with different speeds
+const doorGenerator = function() { //generates a random number whenever a character appears
+
+    setInterval(function () { //calls a random door whenever Bowser appears
+        randomDoorBowser = Math.floor(Math.random() * doors.length);
+    }, bowserSpeed);
+    
+    setInterval(function () { //calls a random door whenever Bowsy appears
+        randomDoorBowsy = Math.floor(Math.random() * doors.length);
+    }, bowsySpeed);
+
+    setInterval(function () { //calls a random door whenever Mario appears
+        randomDoorMario = Math.floor(Math.random() * doors.length);
+    }, marioSpeed);
+
+    setInterval(function () { //calls a random door whenever Wario appears
+        randomDoorWario = Math.floor(Math.random() * doors.length);
+    }, warioSpeed);
+}
 
 const bowserAppear = function () { //Function makes Bowser appear randomly in a door
 
-    setInterval(function () { //calls a random door whenever Bowser appears
-        randomDoorBowser = Math.floor(Math.random() * doors.length)
-    }, bowserSpeed);
-
-    if (randomDoorBowser !== randomDoorBowsy){ //if Bowser's door !== Bowsy's door
+    if (randomDoorBowser !== randomDoorBowsy && randomDoorBowser !== randomDoorMario && randomDoorBowser !== randomDoorWario){ //if Bowser's door !== any other character's door
         $(".door" + randomDoorBowser).append(`<img src="assets/bowser1.png" class="character bowser" alt="">`); //add the html of Bowser to DOM
     
         setTimeout(function () { //removes Bowser after a period of time
-            $('.character').remove();
+            $('.bowser').remove();
         }, 800)
     }
 }
 
-
 const bowsyAppear = function () { //Function makes Bowsy appear randomly in a door
-    
-    setInterval(function () { //calls a random door whenever Bowsy appears
-        randomDoorBowsy = Math.floor(Math.random() * doors.length)
-    }, bowsySpeed);
-    
-    if (randomDoorBowsy !== randomDoorBowser) { //if Bowsy's door !== Bowsers's door
+
+    if (randomDoorBowsy !== randomDoorBowser && randomDoorBowsy !== randomDoorMario && randomDoorBowsy !== randomDoorWario) { //if Bowsy's door !== another character's door
         $(".door" + randomDoorBowsy).append(`<img src="assets/bowser0.png" class="character bowsy" alt="">`); //adds the html of Bowsy to DOM
         setTimeout(function () { //removes Bowsy after a period of time
-            $('.character').remove();
+            $('.bowsy').remove();
         }, 900)
     }
 }
 
-// const speeds = function () {
-//     const bowserSpeedIncrease = setInterval(function (){
-//         bowserSpeed = bowserSpeed - 750;
-//     }, 10000) //makes Bowser's speed increase every 10 seconds
-//     const bowsySpeedIncrease = setInterval(function (){
-//         bowsySpeed = bowsySpeed - 100;
-        
-//     }, 9000) //makes Bowser's speed increase every 10 seconds
-//     setTimeout(function(){
-//         clearInterval(bowsySpeedIncrease);
-//     }, 30500) //stops speeds from increasing any further
-// }
+const marioAppear = function () { //Function makes Mario appear randomly in a door
 
-const bowserAppears = setInterval(bowserAppear, bowserSpeed); //Calls functions at diferent interval
-const bowsyAppears = setInterval(bowsyAppear, bowsySpeed); 
+    if (randomDoorMario !== randomDoorBowsy && randomDoorMario !== randomDoorBowser && randomDoorMario !== randomDoorWario) { //if Mario's door !== another character's door
+        $(".door" + randomDoorMario).append(`<img src="assets/mario0.png" class="character mario" alt="">`); //adds the html of Mario to DOM
+        setTimeout(function () { //removes Mario after a period of time
+            $('.mario').remove();
+        }, 900)
+    }
+}
+
+const warioAppear = function () { //Function makes Wario appear randomly in a door
+
+    if (randomDoorWario !== randomDoorBowsy && randomDoorWario !== randomDoorBowser && randomDoorWario !== randomDoorMario) { //if Wario's door !== another character's door
+        $(".door" + randomDoorWario).append(`<img src="assets/mario1.png" class="character wario" alt="Angry Wario">`); //adds the html of Wario to DOM
+        setTimeout(function () { //removes Wario after a period of time
+            $('.wario').remove();
+        }, 900)
+    }
+}
+
+const speeds = function () { //holds speeds changes for characters
+
+    //original speeds can be found under Character Appearances heading
+    const bowserSpeedIncrease = setInterval(function (){
+        bowserSpeed = bowserSpeed - 800;
+    }, 10000) //makes Bowser's speed increase every 10 seconds
+
+    const bowsySpeedIncrease = setInterval(function (){
+        bowsySpeed = bowsySpeed - 250;
+    }, 9000) //makes Bowsy's speed increase every 10 seconds
+
+    setTimeout(function(){
+        clearInterval(bowsySpeedIncrease);
+        clearInterval(bowserSpeedIncrease);
+    }, 30500) //stops speeds from increasing any further after 30ish seconds
+}
+
+const makeCharactersAppear = function() { //makes all previous functions run at the intervals previously set
+    doorGenerator();
+    setInterval(bowserAppear, bowserSpeed); //Calls functions at different interval
+    setInterval(bowsyAppear, bowsySpeed); 
+    setInterval(marioAppear, marioSpeed);
+    setInterval(warioAppear, warioSpeed);
+}
+
+makeCharactersAppear();
 
 //SET UP USER CONTROLS ===============================
 
-let bowserLocation; //equal to door number where user presses
+let characterLocation; //equal to door number where user presses
 
-const keyFunction = function () {
+const keyFunction = function () { //when the S, D, K or L keys are pressed, do the following:
     $(document).on("keydown", function (keypress) {
         //S Key
         if (keypress.keyCode === 83) {
             $('.key83').addClass('doorSelected'); //add a class of doorSelected to show that it was selected 
-            $('.sKey').replaceWith(`<img src="assets/keys/sKeyPress.svg" alt="" class="key sKey">`);
-            bowserLocation = 0;
+            $('.sKey').replaceWith(`<img src="assets/keys/sKeyPress.svg" alt="S key selected" class="key sKey">`); //change the key graphic to look selected
+            characterLocation = 0; //set character location to first door
         }
         //D Key
         if (keypress.keyCode === 68) {
             $(".key68").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
-            $('.dKey').replaceWith(`<img src="assets/keys/dKeyPress.svg" alt="" class="key dKey">`);
-            bowserLocation = 1;
+            $('.dKey').replaceWith(`<img src="assets/keys/dKeyPress.svg" alt="D key selected" class="key dKey">`);//change the key graphic to look selected
+            characterLocation = 1; //set character location to second door
         }
         //K Key
         if (keypress.keyCode === 75) {
             $(".key75").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
-            $('.kKey').replaceWith(`<img src="assets/keys/kKeyPress.svg" alt="" class="key kKey">`);
-            bowserLocation = 2;
+            $('.kKey').replaceWith(`<img src="assets/keys/kKeyPress.svg" alt="K key selected" class="key kKey">`);//change the key graphic to look selected
+            characterLocation = 2; //set character location to third door
         }
         //L Key
         if (keypress.keyCode === 76) {
             $(".key76").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
-            $('.lKey').replaceWith(`<img src="assets/keys/lKeyPress.svg" alt="" class="key lKey">`);
-            bowserLocation = 3;
+            $('.lKey').replaceWith(`<img src="assets/keys/lKeyPress.svg" alt="L key selected" class="key lKey">`);//change the key graphic to look selected
+            characterLocation = 3; //set character location to fourth door
         }
     })
 
-    $(document).keyup(function () { //removes class of doorSelected when user lifts keys
+    $(document).keyup(function () { 
+        //removes class of doorSelected when user lifts keys
         $('.key83').removeClass('doorSelected');
         $('.key68').removeClass('doorSelected');
         $('.key75').removeClass('doorSelected');
         $('.key76').removeClass('doorSelected');
-        $('.sKey').replaceWith(`<img src="assets/keys/sKey.svg" alt="" class="key sKey">`);
-        $('.dKey').replaceWith(`<img src="assets/keys/dKey.svg" alt="" class="key dKey">`);
-        $('.kKey').replaceWith(`<img src="assets/keys/kKey.svg" alt="" class="key kKey">`);
-        $('.lKey').replaceWith(`<img src="assets/keys/lKey.svg" alt="" class="key lKey">`);
+
+        //return key graphic to unselected
+        $('.sKey').replaceWith(`<img src="assets/keys/sKey.svg" alt="S Key on keyboard" class="key sKey">`);
+        $('.dKey').replaceWith(`<img src="assets/keys/dKey.svg" alt="D Key on keyboard" class="key dKey">`);
+        $('.kKey').replaceWith(`<img src="assets/keys/kKey.svg" alt="K Key on keyboard" class="key kKey">`);
+        $('.lKey').replaceWith(`<img src="assets/keys/lKey.svg" alt="L Key on keyboard" class="key lKey">`);
     });
 }
 
 //SET UP SCORING SYSTEM ==============================
 
-score = [0]; 
-let newScore, key76, key83, key68, key75;
+score = [0]; //sets initial score to 0
+let locationValue, key76, key83, key68, key75;
+let bowser, bowsy, mario, wario;
 
-function bowserInDoor() { //checks if any Bowser is in the door
-    let locationValue = $('.door' + bowserLocation).find('img').val();
-    if (locationValue === undefined) { //If someone is not there and correct key is selected
-        score--;
-        $('audio').get(1).play();
-    } else if (locationValue === '') { //If someone is there and correct key is selected
-        // score++;
-        whichBowser();
-        bowserPoints();
-        $('audio').get(0).play();
-    }
-    $('.score').html(`${score}`); //updates the score in the DOM
-}
-
-let bowser, bowsy; //determines bowser's location
-
-const whichBowser = function () {
+const whichCharacter = function () { //calculate whether a character is there
     bowser = $('.bowser').length;
     bowsy = $('.bowsy').length;
+    mario = $('.mario').length;
+    wario = $('.wario').length;
 }
 
-
-//if door = bowser/bowsey.length 1 = they are there
-const bowserPoints = function () {
-    if (bowser === 1){ //bowser is there
+const characterPoints = function () { //sets different point increases/decreases for each character
+    if (bowser === 1){ 
         score += 2;
     }
     if(bowsy === 1) {
         score++;
     }
+    if(mario === 1) {
+        score--;
+    }
+    if(wario === 1) {
+        score -= 2;
+    }
 }
 
-//If user presses L, checks if Bowser is there and updates score 
+let bowsyThere, bowserThere, warioThere, marioThere;
+
+function bowserOrMario() { //determines whether the character in the door is a bowser or mario type on key press
+    bowsyThere = $('.door' + characterLocation).has('.bowsy');
+    bowserThere = $('.door' + characterLocation).has('.bowser');
+    warioThere = $('.door' + characterLocation).has('.wario');
+    marioThere = $('.door' + characterLocation).has('.mario');
+
+    if (warioThere.length === 1) {
+        marioInDoor(); //call mario scoring function
+    } else if (marioThere.length === 1) {
+        marioInDoor();
+    } else if (bowsyThere.length === 1){
+        bowserInDoor(); //call bowser scoring function
+    } else if (bowserThere.length === 1){
+        bowserInDoor();
+    }
+}
+
+function bowserInDoor() { //checks if any Bowser is in the door
+    //need separate function bc of bowser and mario have different sound effects
+
+    locationValue = $('.door' + characterLocation).find('img').val(); //determines if someeone is there
+    if (locationValue === undefined) { //If someone is not there and key is selected
+        score--;
+        $('audio').get(1).play(); //play bump sound
+    } else if (locationValue === '') { //If someone is there and correct key is selected
+        whichCharacter(); //Bowser or Bowsy
+        characterPoints(); //assign appropriate points
+        $('audio').get(0).play(); //play coin sound
+    }
+
+    $('.score').html(`${score}`); //updates the score in the DOM
+}
+
+function marioInDoor() { //checks if any Mario is in the door
+    locationValue = $('.door' + characterLocation).find('img').val();
+    if (locationValue === undefined) { //If someone is not there and correct key is selected
+        score--;
+        $('audio').get(0).play(); //play coin sound
+    } else if (locationValue === '') { //If someone is there and correct key is selected
+        whichCharacter();
+        characterPoints();
+        $('audio').get(1).play(); //play bump sound
+    }
+    $('.score').html(`${score}`); //updates the score in the DOM
+}
+
+
+//IDENTIFY IF USER WINS OR LOSES ==============================
+
+//If user presses a key, checks if Bowser is there and updates score 
 const winOrLose = function () {
     $(document).on("keydown", function (keypress) {
-        if (keypress.keyCode === 83) {
-            bowserInDoor(); // If Bowser is in a door and S key has been selected, increase score by 1
+        if (keypress.keyCode === 83) { //S Key
+            bowserOrMario(); //finds out what kind of character is in the door, then determines score
             if (score < 0) {
                 alert('You lose! Press okay to play again.');
                 location.reload(true);
@@ -202,8 +285,8 @@ const winOrLose = function () {
             }
         }
 
-        if (keypress.keyCode === 68) {
-            bowserInDoor(); // If Bowser is in a door and D key has been selected, increase score by 1
+        if (keypress.keyCode === 68) { //D Key
+            bowserOrMario(); //finds out what kind of character is in the door, then determines score
             if (score < 0) {
                 alert('You lose! Press okay to play again.');
                 location.reload(true);
@@ -213,8 +296,8 @@ const winOrLose = function () {
             }
         }
 
-        if (keypress.keyCode === 75) {
-            bowserInDoor(); // If Bowser is in a door and K key has been selected, increase score by 1
+        if (keypress.keyCode === 75) { //K Key
+            bowserOrMario(); //finds out what kind of character is in the door, then determines score
             if (score < 0) {
                 alert('You lose! Press okay to play again.');
                 location.reload(true);
@@ -224,8 +307,8 @@ const winOrLose = function () {
             }
         }
         
-        if (keypress.keyCode === 76) {
-            bowserInDoor(); // If Bowser is in a door and L key has been selected, increase score by 1
+        if (keypress.keyCode === 76) { //L Key
+            bowserOrMario(); //finds out what kind of character is in the door, then determines score
             if (score < 0) {
                 alert('You lose! Press okay to play again.');
                 location.reload(true);
