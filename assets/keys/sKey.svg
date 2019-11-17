@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="93px" height="93px" viewBox="0 0 93 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>S KEY</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Start-State-Copy-5" transform="translate(-159.000000, -704.000000)">
+            <g id="S-KEY" transform="translate(163.000000, 708.000000)">
+                <path d="M11,-1.75 L74,-1.75 C81.0416306,-1.75 86.75,3.95836944 86.75,11 L86.75,74 C86.75,81.0416306 81.0416306,86.75 74,86.75 L11,86.75 C3.95836944,86.75 -1.75,81.0416306 -1.75,74 L-1.75,11 C-1.75,3.95836944 3.95836944,-1.75 11,-1.75 Z" id="s-rect-outer" stroke="#FAFAFA" stroke-width="3.5"></path>
+                <path d="M11,7.25 L75,7.25 C77.0710678,7.25 78.75,8.92893219 78.75,11 L78.75,75 C78.75,77.0710678 77.0710678,78.75 75,78.75 L11,78.75 C8.92893219,78.75 7.25,77.0710678 7.25,75 L7.25,11 C7.25,8.92893219 8.92893219,7.25 11,7.25 Z" id="s-rect-inner" stroke="#FAFAFA" stroke-width="3.5"></path>
+                <polygon id="s-light" fill="#FAFAFA" fill-rule="nonzero" points="52.625 60.875 52.625 55.75 57.75 55.75 57.75 45.5 52.625 45.5 52.625 40.375 37.25 40.375 37.25 30.125 47.5 30.125 47.5 35.25 57.75 35.25 57.75 30.125 52.625 30.125 52.625 25 32.125 25 32.125 30.125 27 30.125 27 40.375 32.125 40.375 32.125 45.5 47.5 45.5 47.5 55.75 37.25 55.75 37.25 50.625 27 50.625 27 55.75 32.125 55.75 32.125 60.875"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

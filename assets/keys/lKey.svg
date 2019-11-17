@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="93px" height="93px" viewBox="0 0 93 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>L KEY</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Start-State-Copy-5" transform="translate(-1203.000000, -704.000000)">
+            <g id="L-KEY" transform="translate(1207.000000, 708.000000)">
+                <path d="M11,-1.75 L74,-1.75 C81.0416306,-1.75 86.75,3.95836944 86.75,11 L86.75,74 C86.75,81.0416306 81.0416306,86.75 74,86.75 L11,86.75 C3.95836944,86.75 -1.75,81.0416306 -1.75,74 L-1.75,11 C-1.75,3.95836944 3.95836944,-1.75 11,-1.75 Z" id="l-rect-outer" stroke="#FAFAFA" stroke-width="3.5"></path>
+                <path d="M11,7.25 L75,7.25 C77.0710678,7.25 78.75,8.92893219 78.75,11 L78.75,75 C78.75,77.0710678 77.0710678,78.75 75,78.75 L11,78.75 C8.92893219,78.75 7.25,77.0710678 7.25,75 L7.25,11 C7.25,8.92893219 8.92893219,7.25 11,7.25 Z" id="l-rect-inner" stroke="#FAFAFA" stroke-width="3.5"></path>
+                <polygon id="l-light" fill="#FAFAFA" fill-rule="nonzero" points="60.25 63.125 60.25 57.25 36.75 57.25 36.75 22 25 22 25 63.125"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

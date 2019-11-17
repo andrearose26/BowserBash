@@ -7,13 +7,38 @@
 .door {
     height: 275px;
     width: 200px;
-    margin: 15px;
-    background-color: whitesmoke;
-    border-radius: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 5px solid #FF00A3;
+    position: relative;
+}
+
+.door-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .key {
+        width: 65px;
+        align-items: center;
+        margin: 0 auto;
+    }
+    
+    // .keySelected {
+    //     background: rgba($color: #FF00A3, $alpha: 0.80);
+    //     border-radius: 10px;
+    // }
+}
+
+.door-border {
+    border: 5px solid #711CA2;
+    border-radius: 20px;
+    height: 270px;
+    width: 200px;
 }
 
 .door.doorSelected {
-    background-color: lightsteelblue;
+    background-color:rgba($color: #FF00A3, $alpha: 0.42);
 }
 
 .character {
@@ -27,6 +52,7 @@
 
 .title {
     font-size: 2rem;
+    text-shadow: 3px 3px #711CA2;
 }
 
 
@@ -38,12 +64,14 @@ h1, h2 {
 .scoreSection {
     display: flex;
     justify-content: center;
+    text-shadow: 3px 3px #711CA2;
 }
 
 .scoreTitle {
     margin: 0;
     display: flex;
     justify-content: center;
+    font-size: 1.8rem;
 }
 
 .score {

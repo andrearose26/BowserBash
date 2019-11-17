@@ -25,12 +25,13 @@ const keys = [
 const characters = {
     bad: [
         {
-            name: "Bowser",
-            pointsGained: 3,
-        },
-        {
             name: "Bowsey",
             pointsGained: 1
+        },
+        {
+            name: "Bowser",
+            pointsGained: 3,
+            // speedOne: 
         }
     ]
 }
@@ -44,46 +45,64 @@ $(document).ready(function () {
             $('#game').show(); //- show game page
             keyFunction(); //- activate keys
             winOrLose(); //- start checking the score
+            speeds();
         }
     })
 });
 
 //CHARACTER APPEARANCES ================================
 
-let randomDoorBowser, randomDoorBowsy; //selects a random door number from the doors array
+let randomDoorBowser, randomDoorBowsy, bowserSpeed, bowsySpeed; //selects a random door number from the doors array
+bowserSpeed = 3500; //sets original speed
+bowsySpeed = 1500;
+
+//set timeout, change variable to bowser new speed, create an array with different speeds
 
 const bowserAppear = function () { //Function makes Bowser appear randomly in a door
 
     setInterval(function () { //calls a random door whenever Bowser appears
         randomDoorBowser = Math.floor(Math.random() * doors.length)
-    }, 3500);
+    }, bowserSpeed);
 
     if (randomDoorBowser !== randomDoorBowsy){ //if Bowser's door !== Bowsy's door
         $(".door" + randomDoorBowser).append(`<img src="assets/bowser1.png" class="character bowser" alt="">`); //add the html of Bowser to DOM
     
         setTimeout(function () { //removes Bowser after a period of time
-            $('img').remove();
+            $('.character').remove();
         }, 800)
     }
 }
 
-const bowsyAppear = function () { //Function makes Bowsy appear randomly in a door
 
+const bowsyAppear = function () { //Function makes Bowsy appear randomly in a door
+    
     setInterval(function () { //calls a random door whenever Bowsy appears
         randomDoorBowsy = Math.floor(Math.random() * doors.length)
-    }, 1500);
-
+    }, bowsySpeed);
+    
     if (randomDoorBowsy !== randomDoorBowser) { //if Bowsy's door !== Bowsers's door
         $(".door" + randomDoorBowsy).append(`<img src="assets/bowser0.png" class="character bowsy" alt="">`); //adds the html of Bowsy to DOM
         setTimeout(function () { //removes Bowsy after a period of time
-            $('img').remove();
+            $('.character').remove();
         }, 900)
     }
-
 }
 
-const bowserAppears = setInterval(bowserAppear, 3500); //Calls functions at diferent interval
-const bowsyAppears = setInterval(bowsyAppear, 1500); 
+// const speeds = function () {
+//     const bowserSpeedIncrease = setInterval(function (){
+//         bowserSpeed = bowserSpeed - 750;
+//     }, 10000) //makes Bowser's speed increase every 10 seconds
+//     const bowsySpeedIncrease = setInterval(function (){
+//         bowsySpeed = bowsySpeed - 100;
+        
+//     }, 9000) //makes Bowser's speed increase every 10 seconds
+//     setTimeout(function(){
+//         clearInterval(bowsySpeedIncrease);
+//     }, 30500) //stops speeds from increasing any further
+// }
+
+const bowserAppears = setInterval(bowserAppear, bowserSpeed); //Calls functions at diferent interval
+const bowsyAppears = setInterval(bowsyAppear, bowsySpeed); 
 
 //SET UP USER CONTROLS ===============================
 
@@ -93,22 +112,26 @@ const keyFunction = function () {
     $(document).on("keydown", function (keypress) {
         //S Key
         if (keypress.keyCode === 83) {
-            $(".key83").addClass('doorSelected'); //add a class of doorSelected to show that it was selected 
+            $('.key83').addClass('doorSelected'); //add a class of doorSelected to show that it was selected 
+            $('.sKey').replaceWith(`<img src="assets/keys/sKeyPress.svg" alt="" class="key sKey">`);
             bowserLocation = 0;
         }
         //D Key
         if (keypress.keyCode === 68) {
             $(".key68").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
+            $('.dKey').replaceWith(`<img src="assets/keys/dKeyPress.svg" alt="" class="key dKey">`);
             bowserLocation = 1;
         }
         //K Key
         if (keypress.keyCode === 75) {
             $(".key75").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
+            $('.kKey').replaceWith(`<img src="assets/keys/kKeyPress.svg" alt="" class="key kKey">`);
             bowserLocation = 2;
         }
         //L Key
         if (keypress.keyCode === 76) {
             $(".key76").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
+            $('.lKey').replaceWith(`<img src="assets/keys/lKeyPress.svg" alt="" class="key lKey">`);
             bowserLocation = 3;
         }
     })
@@ -118,6 +141,10 @@ const keyFunction = function () {
         $('.key68').removeClass('doorSelected');
         $('.key75').removeClass('doorSelected');
         $('.key76').removeClass('doorSelected');
+        $('.sKey').replaceWith(`<img src="assets/keys/sKey.svg" alt="" class="key sKey">`);
+        $('.dKey').replaceWith(`<img src="assets/keys/dKey.svg" alt="" class="key dKey">`);
+        $('.kKey').replaceWith(`<img src="assets/keys/kKey.svg" alt="" class="key kKey">`);
+        $('.lKey').replaceWith(`<img src="assets/keys/lKey.svg" alt="" class="key lKey">`);
     });
 }
 
