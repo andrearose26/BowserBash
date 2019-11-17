@@ -189,13 +189,16 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   height: 75vh;
 }
 
+.mobile {
+  display: none;
+}
+
 .door {
   height: 275px;
   width: 200px;
   margin: 10px;
   border-radius: 20px;
   border: 5px solid #FF00A3;
-  position: relative;
 }
 
 .door-info {
@@ -230,16 +233,17 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .character {
-  height: 190px;
-  width: 175px;
+  height: 180px;
+  width: 165px;
   margin: 20px 0;
-  margin-left: 15px;
+  margin-left: 10px;
   margin-right: 0;
 }
 
 .title {
   font-size: 2rem;
   text-shadow: 3px 3px #711CA2;
+  margin-top: 2.5rem;
 }
 
 h1, h2 {
@@ -272,6 +276,89 @@ h1, h2 {
   margin: 0;
   margin-left: 25px;
   font-size: 2.5rem;
+}
+
+@media (max-width: 1005px) {
+  .door {
+    height: 250px;
+    width: 175px;
+    border: 3px solid #FF00A3;
+  }
+  .door-info .key {
+    width: 50px;
+  }
+  .door-border {
+    height: 245px;
+    width: 175px;
+    border: 3px solid #711CA2;
+  }
+  .character {
+    height: 155px;
+    width: 140px;
+  }
+}
+
+@media (max-width: 870px) {
+  .door {
+    height: 225px;
+    width: 150px;
+    margin: 10px;
+  }
+  .door-border {
+    height: 220px;
+    width: 150px;
+  }
+  .character {
+    height: 130px;
+    width: 115px;
+    margin: 20px 0;
+    margin-left: 10px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 740px) {
+  .door {
+    height: 210px;
+    width: 135px;
+    margin: 10px;
+  }
+  .door-border {
+    height: 205px;
+    width: 135px;
+    border: none;
+  }
+  .character {
+    height: 120px;
+    width: 105px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 615px) {
+  .door {
+    height: 170px;
+    width: 110px;
+    margin: 5px auto;
+  }
+  .door-border {
+    height: 205px;
+    width: 135px;
+    border: none;
+  }
+  .character {
+    height: 105px;
+    width: 90px;
+    margin-left: 5px;
+  }
+  .door-info {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .door-info .key {
+    width: 35px;
+  }
 }
 
 #start {
@@ -393,6 +480,20 @@ button {
   }
   .instructions p {
     font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .mobile {
+    display: block;
+  }
+  .instructions,
+  #start h3,
+  #start button {
+    display: none;
+  }
+  #start h1 {
+    font-size: 2.5rem;
   }
 }
 

@@ -39,6 +39,9 @@ const characters = {
 //When document starts, do the following: 
 $(document).ready(function () {
     $('#game').hide(); //Hide the game div
+    if ($(window).width() < 575) {
+        console.log('mobile')
+    }
     $(document).on("keydown", function (keypress) { //When the spacebar is pressed
         if (keypress.keyCode === 32) {
             $('#start').hide(); //- hide start page
@@ -233,10 +236,3 @@ const winOrLose = function () {
         }
     })
 }
-
-
-//SET UP GAMEPLAY SPEED (stretch) ====================
-
-//SET UP CHARACTER ACTIONS (stretch) =================
-
-    //1. Scoring system for each character

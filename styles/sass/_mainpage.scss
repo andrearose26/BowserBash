@@ -133,3 +133,19 @@ button {
         }
     }
 }
+
+@media(max-width:570px) {
+    .mobile {
+        display: block;
+    }
+
+    .instructions,
+    #start h3,
+    #start button {
+        display: none;
+    }
+
+    #start h1 {
+        font-size: 2.5rem;
+    }
+}
