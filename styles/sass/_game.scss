@@ -171,3 +171,22 @@ h1, h2 {
         }
     }
 }
+
+@media(max-width:365px) {
+
+    .title {
+        font-size: 1.8rem;
+    }
+    .door-border {
+        height:185px;
+    }
+
+    .scoreSection {
+        margin-top: 1rem;
+        
+        .scoreTitle,
+        .score {
+            font-size: 1.2rem;
+        }
+    }
+}

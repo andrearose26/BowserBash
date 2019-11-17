@@ -3,52 +3,22 @@ let score = []; //only doors and score REALLY needed
 
 const doors = [".door0", ".door1", ".door2", ".door3"];
 
-// const keys = [
-//     {
-//         name: "S Key",
-//         key: 83
-//     },
-//     {
-//         name: "D Key",
-//         key: 68
-//     },
-//     {
-//         name: "K Key",
-//         key: 75
-//     },
-//     {
-//         name: "L Key",
-//         key: 76
-//     }
-// ]
-
-// const characters = {
-//     bad: [
-//         {
-//             name: "Bowsey",
-//             pointsGained: 1
-//         },
-//         {
-//             name: "Bowser",
-//             pointsGained: 3,
-
-//         }
-//     ]
-// }
-
 //When document starts, do the following: 
 $(document).ready(function () {
     $('#game').hide(); //hide the game div
+    keyFunction(); //- activate keys
+    winOrLose(); //- start checking the score
+    speeds(); //set speed timer
+
+    
+
     $(document).on("keydown", function (keypress) { //when the spacebar is pressed
         if (keypress.keyCode === 32) {
             $('#start').hide(); //- hide start page
             $('#game').show(); //- show game page
-            keyFunction(); //- activate keys
-            winOrLose(); //- start checking the score
-            speeds(); //set speed timer
         }
     })
-});
+})
 
 //CONTROL CHARACTER APPEARANCES ============================
 
@@ -220,13 +190,13 @@ const characterPoints = function () { //sets different point increases/decreases
     }
 }
 
-let bowsyThere, bowserThere, warioThere, marioThere;
+// let bowsyThere, bowserThere, warioThere, marioThere;
 
 function bowserOrMario() { //determines whether the character in the door is a bowser or mario type on key press
-    bowsyThere = $('.door' + characterLocation).has('.bowsy');
-    bowserThere = $('.door' + characterLocation).has('.bowser');
-    warioThere = $('.door' + characterLocation).has('.wario');
-    marioThere = $('.door' + characterLocation).has('.mario');
+    let bowsyThere = $('.door' + characterLocation).has('.bowsy');
+    let bowserThere = $('.door' + characterLocation).has('.bowser');
+    let warioThere = $('.door' + characterLocation).has('.wario');
+    let marioThere = $('.door' + characterLocation).has('.mario');
 
     if (warioThere.length === 1) {
         marioInDoor(); //call mario scoring function
@@ -268,7 +238,6 @@ function marioInDoor() { //checks if any Mario is in the door
     $('.score').html(`${score}`); //updates the score in the DOM
 }
 
-
 //IDENTIFY IF USER WINS OR LOSES ==============================
 
 //If user presses a key, checks if Bowser is there and updates score 
@@ -278,7 +247,7 @@ const winOrLose = function () {
             bowserOrMario(); //finds out what kind of character is in the door, then determines score
             if (score < 0) {
                 alert('You lose! Press okay to play again.');
-                location.reload(true);
+                location.reload(true); //refreshes page
             } else if (score >= 20) {
                 alert('You win! Press okay to play again.');
                 location.reload(true);

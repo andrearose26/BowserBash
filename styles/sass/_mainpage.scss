@@ -107,6 +107,14 @@ button {
 }
 
 @media(max-width:570px) {
+
+    .game {
+        flex-wrap: wrap;
+
+        .door-border {
+            width: 50%;
+        }
+    }
     .mobile {
         display: block;
     }
@@ -119,5 +127,13 @@ button {
 
     #start h1 {
         font-size: 2.5rem;
+    }
+
+    .key-images {
+
+        img {
+            width: 35px;
+            margin: 5px;
+        }
     }
 }

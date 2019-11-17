@@ -361,6 +361,22 @@ h1, h2 {
   }
 }
 
+@media (max-width: 365px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .door-border {
+    height: 185px;
+  }
+  .scoreSection {
+    margin-top: 1rem;
+  }
+  .scoreSection .scoreTitle,
+  .scoreSection .score {
+    font-size: 1.2rem;
+  }
+}
+
 #start {
   height: calc(100vh - 100px);
   text-align: center;
@@ -473,6 +489,13 @@ button {
 }
 
 @media (max-width: 570px) {
+  .game {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .game .door-border {
+    width: 50%;
+  }
   .mobile {
     display: block;
   }
@@ -483,6 +506,10 @@ button {
   }
   #start h1 {
     font-size: 2.5rem;
+  }
+  .key-images img {
+    width: 35px;
+    margin: 5px;
   }
 }
 
