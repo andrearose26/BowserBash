@@ -110,19 +110,30 @@ button {
 
     .game {
         flex-wrap: wrap;
+        justify-content: center;
 
         .door-border {
             width: 50%;
         }
     }
+
+    // p.mobile {
+    //     text-align: center;
+    //     font-size: 1.1rem;
+    // }
+
     .mobile {
         display: block;
     }
 
-    .instructions,
-    #start h3,
-    #start button {
-        display: none;
+    .door {
+        height: 170px;
+        width: 115px;
+        margin:0 10px;
+    }
+
+    .door-border {
+        height: 183px;
     }
 
     #start h1 {

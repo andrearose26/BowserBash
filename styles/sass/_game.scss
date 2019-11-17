@@ -4,6 +4,15 @@
     height: 75vh;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    .level {
+        align-self: center;
+    }
+}
+
 .mobile {
     display:none;
 }

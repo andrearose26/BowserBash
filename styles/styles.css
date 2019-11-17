@@ -189,6 +189,21 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   height: 75vh;
 }
 
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header .level {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 .mobile {
   display: none;
 }
@@ -492,6 +507,9 @@ button {
   .game {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .game .door-border {
     width: 50%;
@@ -499,10 +517,13 @@ button {
   .mobile {
     display: block;
   }
-  .instructions,
-  #start h3,
-  #start button {
-    display: none;
+  .door {
+    height: 170px;
+    width: 115px;
+    margin: 0 10px;
+  }
+  .door-border {
+    height: 183px;
   }
   #start h1 {
     font-size: 2.5rem;

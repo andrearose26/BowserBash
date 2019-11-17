@@ -3,22 +3,23 @@ let score = []; //only doors and score REALLY needed
 
 const doors = [".door0", ".door1", ".door2", ".door3"];
 
+
 //When document starts, do the following: 
 $(document).ready(function () {
     $('#game').hide(); //hide the game div
     keyFunction(); //- activate keys
     winOrLose(); //- start checking the score
-    speeds(); //set speed timer
-
     
-
     $(document).on("keydown", function (keypress) { //when the spacebar is pressed
         if (keypress.keyCode === 32) {
             $('#start').hide(); //- hide start page
             $('#game').show(); //- show game page
+            speeds(); //set speed timer
         }
     })
 })
+
+
 
 //CONTROL CHARACTER APPEARANCES ============================
 
@@ -88,21 +89,26 @@ const warioAppear = function () { //Function makes Wario appear randomly in a do
     }
 }
 
+let level = 1;
+let increment = 1;
+
 const speeds = function () { //holds speeds changes for characters
 
     //original speeds can be found under Character Appearances heading
-    const bowserSpeedIncrease = setInterval(function (){
-        bowserSpeed = bowserSpeed - 800;
-    }, 10000) //makes Bowser's speed increase every 10 seconds
 
-    const bowsySpeedIncrease = setInterval(function (){
-        bowsySpeed = bowsySpeed - 250;
-    }, 9000) //makes Bowsy's speed increase every 10 seconds
+    const speedIncrease = setInterval(function(){
+        bowserSpeed = bowserSpeed - 750;
+        bowsySpeed = bowsySpeed - 300;
+        marioSpeed = marioSpeed - 200;
+        warioSpeed = warioSpeed - 400;
+        level = level + increment;
+        $('.level').text(`Level ${level}`);
+        $('audio').get(2).play();
+    }, 9000)
 
     setTimeout(function(){
-        clearInterval(bowsySpeedIncrease);
-        clearInterval(bowserSpeedIncrease);
-    }, 30500) //stops speeds from increasing any further after 30ish seconds
+        clearInterval(speedIncrease)
+    }, 60500) //stops speeds from increasing any further after 1 minute
 }
 
 const makeCharactersAppear = function() { //makes all previous functions run at the intervals previously set
@@ -117,32 +123,33 @@ makeCharactersAppear();
 
 //SET UP USER CONTROLS ===============================
 
+//KEY PRESSES
 let characterLocation; //equal to door number where user presses
 
 const keyFunction = function () { //when the S, D, K or L keys are pressed, do the following:
-    $(document).on("keydown", function (keypress) {
+    $(document).on('keydown', function (keypress) {
         //S Key
         if (keypress.keyCode === 83) {
             $('.key83').addClass('doorSelected'); //add a class of doorSelected to show that it was selected 
-            $('.sKey').replaceWith(`<img src="assets/keys/sKeyPress.svg" alt="S key selected" class="key sKey">`); //change the key graphic to look selected
+            $('.sKey').replaceWith(`<img src="assets/keys/sKeyPress.svg" alt="S key selected" class="key sKey desktop">`); //change the key graphic to look selected
             characterLocation = 0; //set character location to first door
         }
         //D Key
         if (keypress.keyCode === 68) {
             $(".key68").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
-            $('.dKey').replaceWith(`<img src="assets/keys/dKeyPress.svg" alt="D key selected" class="key dKey">`);//change the key graphic to look selected
+            $('.dKey').replaceWith(`<img src="assets/keys/dKeyPress.svg" alt="D key selected" class="key dKey desktop">`);//change the key graphic to look selected
             characterLocation = 1; //set character location to second door
         }
         //K Key
         if (keypress.keyCode === 75) {
             $(".key75").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
-            $('.kKey').replaceWith(`<img src="assets/keys/kKeyPress.svg" alt="K key selected" class="key kKey">`);//change the key graphic to look selected
+            $('.kKey').replaceWith(`<img src="assets/keys/kKeyPress.svg" alt="K key selected" class="key kKey desktop">`);//change the key graphic to look selected
             characterLocation = 2; //set character location to third door
         }
         //L Key
         if (keypress.keyCode === 76) {
             $(".key76").addClass('doorSelected'); //add a class of doorSelected to show that it was selected
-            $('.lKey').replaceWith(`<img src="assets/keys/lKeyPress.svg" alt="L key selected" class="key lKey">`);//change the key graphic to look selected
+            $('.lKey').replaceWith(`<img src="assets/keys/lKeyPress.svg" alt="L key selected" class="key lKey desktop">`);//change the key graphic to look selected
             characterLocation = 3; //set character location to fourth door
         }
     })
@@ -155,10 +162,10 @@ const keyFunction = function () { //when the S, D, K or L keys are pressed, do t
         $('.key76').removeClass('doorSelected');
 
         //return key graphic to unselected
-        $('.sKey').replaceWith(`<img src="assets/keys/sKey.svg" alt="S Key on keyboard" class="key sKey">`);
-        $('.dKey').replaceWith(`<img src="assets/keys/dKey.svg" alt="D Key on keyboard" class="key dKey">`);
-        $('.kKey').replaceWith(`<img src="assets/keys/kKey.svg" alt="K Key on keyboard" class="key kKey">`);
-        $('.lKey').replaceWith(`<img src="assets/keys/lKey.svg" alt="L Key on keyboard" class="key lKey">`);
+        $('.sKey').replaceWith(`<img src="assets/keys/sKey.svg" alt="S Key on keyboard" class="key sKey desktop">`);
+        $('.dKey').replaceWith(`<img src="assets/keys/dKey.svg" alt="D Key on keyboard" class="key dKey desktop">`);
+        $('.kKey').replaceWith(`<img src="assets/keys/kKey.svg" alt="K Key on keyboard" class="key kKey desktop">`);
+        $('.lKey').replaceWith(`<img src="assets/keys/lKey.svg" alt="L Key on keyboard" class="key lKey desktop">`);
     });
 }
 
