@@ -76,7 +76,45 @@ button {
     }
 }
 
-@media(min-width:700px) and (max-width: 900px) {
+@media(max-width:570px) {
+    
+    .game {
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        .door-border {
+            width: 50%;
+        }
+    }
+    
+    .mobile {
+        display: block;
+    }
+    
+    .door {
+        height: 170px;
+        width: 115px;
+        margin:0 10px;
+    }
+    
+    .door-border {
+        height: 183px;
+    }
+    
+    #start h1 {
+        font-size: 2.5rem;
+    }
+    
+    .key-images {
+        
+        img {
+            width: 35px;
+            margin: 5px;
+        }
+    }
+}
+
+@media(min-width:700px) and (max-width: 1000px) {
     
     .start-info {
         width: 60%;
@@ -84,6 +122,15 @@ button {
     .instructions {
         p {
             font-size: 1rem;
+        }
+    }
+
+    #start {
+        h1 {
+            font-size: 2.5rem;
+        }
+        h3 {
+            font-size: 1.4rem;
         }
     }
 }
@@ -94,11 +141,11 @@ button {
             font-size: 1.4rem;
         }
     }
-
+    
     .start-info {
         width: 50%;
     }
-
+    
     .instructions {
         p {
             font-size: 1.2rem;
@@ -106,45 +153,22 @@ button {
     }
 }
 
-@media(max-width:570px) {
 
-    .game {
-        flex-wrap: wrap;
-        justify-content: center;
 
-        .door-border {
-            width: 50%;
+@media(max-height: 500px) {
+    #start {
+        h1 {
+            font-size: 2.5rem;
         }
     }
-
-    // p.mobile {
-    //     text-align: center;
-    //     font-size: 1.1rem;
-    // }
-
-    .mobile {
-        display: block;
+    
+    .shell-image {
+        display:none;
     }
+}
 
-    .door {
-        height: 170px;
-        width: 115px;
-        margin:0 10px;
-    }
-
-    .door-border {
-        height: 183px;
-    }
-
-    #start h1 {
-        font-size: 2.5rem;
-    }
-
-    .key-images {
-
-        img {
-            width: 35px;
-            margin: 5px;
-        }
+@media(max-height: 590px) {
+    #start {
+        border: none;
     }
 }

@@ -97,14 +97,14 @@ const speeds = function () { //holds speeds changes for characters
     //original speeds can be found under Character Appearances heading
 
     const speedIncrease = setInterval(function(){
-        bowserSpeed = bowserSpeed - 750;
-        bowsySpeed = bowsySpeed - 300;
-        marioSpeed = marioSpeed - 200;
-        warioSpeed = warioSpeed - 400;
+        bowserSpeed = bowserSpeed - 800;
+        bowsySpeed = bowsySpeed - 450;
+        marioSpeed = marioSpeed - 300;
+        warioSpeed = warioSpeed - 500;
         level = level + increment;
         $('.level').text(`Level ${level}`);
         $('audio').get(2).play();
-    }, 9000)
+    }, 14000)
 
     setTimeout(function(){
         clearInterval(speedIncrease)
@@ -197,8 +197,6 @@ const characterPoints = function () { //sets different point increases/decreases
     }
 }
 
-// let bowsyThere, bowserThere, warioThere, marioThere;
-
 function bowserOrMario() { //determines whether the character in the door is a bowser or mario type on key press
     let bowsyThere = $('.door' + characterLocation).has('.bowsy');
     let bowserThere = $('.door' + characterLocation).has('.bowser');
@@ -219,7 +217,7 @@ function bowserOrMario() { //determines whether the character in the door is a b
 function bowserInDoor() { //checks if any Bowser is in the door
     //need separate function bc of bowser and mario have different sound effects
 
-    locationValue = $('.door' + characterLocation).find('img').val(); //determines if someeone is there
+    locationValue = $('.door' + characterLocation).find('img').val(); //determines if someone is there
     if (locationValue === undefined) { //If someone is not there and key is selected
         score--;
         $('audio').get(1).play(); //play bump sound

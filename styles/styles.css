@@ -274,6 +274,7 @@ h1, h2 {
       -ms-flex-pack: center;
           justify-content: center;
   text-shadow: 3px 3px #711CA2;
+  padding-bottom: 15px;
 }
 
 .scoreTitle {
@@ -482,27 +483,6 @@ button {
   }
 }
 
-@media (min-width: 700px) and (max-width: 900px) {
-  .start-info {
-    width: 60%;
-  }
-  .instructions p {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 900px) {
-  #start h3 {
-    font-size: 1.4rem;
-  }
-  .start-info {
-    width: 50%;
-  }
-  .instructions p {
-    font-size: 1.2rem;
-  }
-}
-
 @media (max-width: 570px) {
   .game {
     -ms-flex-wrap: wrap;
@@ -531,6 +511,48 @@ button {
   .key-images img {
     width: 35px;
     margin: 5px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .start-info {
+    width: 60%;
+  }
+  .instructions p {
+    font-size: 1rem;
+  }
+  #start h1 {
+    font-size: 2.5rem;
+  }
+  #start h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 900px) {
+  #start h3 {
+    font-size: 1.4rem;
+  }
+  .start-info {
+    width: 50%;
+  }
+  .instructions p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-height: 500px) {
+  #start h1 {
+    font-size: 2.5rem;
+  }
+  .shell-image {
+    display: none;
+  }
+}
+
+@media (max-height: 590px) {
+  #start {
+    border: none;
   }
 }
 
